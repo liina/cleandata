@@ -2,22 +2,22 @@ library(dplyr)
 
 #Step 1 - merges test set and training set
 
-testdata<-read.table("cleandata/UCI HAR Dataset/test/X_test.txt",stringsAsFactors=FALSE)
-traindata<-read.table("cleandata/UCI HAR Dataset/train/X_train.txt",stringsAsFactors=FALSE)
+testdata<-read.table("UCI HAR Dataset/test/X_test.txt",stringsAsFactors=FALSE)
+traindata<-read.table("UCI HAR Dataset/train/X_train.txt",stringsAsFactors=FALSE)
 ucidata<-rbind(testdata,traindata)
 
 #Step 2 - extracts only columns that contain mean or std in relevant rows of features.txt
 
-features<-read.table("cleandata/UCI HAR Dataset/features.txt",stringsAsFactors=FALSE)
+features<-read.table("UCI HAR Dataset/features.txt",stringsAsFactors=FALSE)
 meanstd<-grep("mean|std",features[,2])
 ucidata<-ucidata[,meanstd]
 
 #Step 3 - adds column with descriptive activity names
 
-testlabels<-scan("cleandata/UCI HAR Dataset/test/y_test.txt")
-trainlabels<-scan("cleandata/UCI HAR Dataset/train/y_train.txt")
+testlabels<-scan("UCI HAR Dataset/test/y_test.txt")
+trainlabels<-scan("UCI HAR Dataset/train/y_train.txt")
 labels<-c(testlabels,trainlabels)
-act_labels<-read.table("cleandata/UCI HAR Dataset/activity_labels.txt",stringsAsFactors=FALSE)
+act_labels<-read.table("UCI HAR Dataset/activity_labels.txt",stringsAsFactors=FALSE)
 for (i in c(1:nrow(act_labels))) {
 	labels<-gsub(i,act_labels[i,2],labels)
 }
@@ -33,8 +33,8 @@ for(i in (1:nrow(features))) {
 
 #Step 5 - adds subject column, uses dplyr package for grouping and summarizing
 
-testsubjects<-scan("cleandata/UCI HAR Dataset/test/subject_test.txt")
-trainsubjects<-scan("cleandata/UCI HAR Dataset/train/subject_train.txt")
+testsubjects<-scan("UCI HAR Dataset/test/subject_test.txt")
+trainsubjects<-scan("UCI HAR Dataset/train/subject_train.txt")
 subject<-c(testsubjects,trainsubjects)
 ucidata<-cbind(subject=subject,ucidata)
 ucitable<-tbl_df(ucidata)
