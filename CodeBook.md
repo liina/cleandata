@@ -12,8 +12,9 @@ Activity - activity names and Subject - code for individual testers
 
 5.Data was grouped by Subject and Activity and mean value for each group was found for each variable
 
-The resulting dataset contains 180 observations - 6 activities for 30 individuals and 79 measurements:
+The resulting dataset contains 180 observations - 6 activities for 30 individuals, and 81 variables - subject,activity and 79 measurements:
 
+List of variables:
 * "subject"
 * "activity"
 * "tBodyAcc-mean-X"
