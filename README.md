@@ -37,10 +37,8 @@ Step 3
 Step 4 - replaces variable names with names from features.txt
 - uses features df from step 2 to replace initial variable names with descriptive names.
 - extracts from features rows containing mean or std (meanstd vector from Step 2) removes parentheses
-- uses for loop to replace variable name with descriptive name
--- columnindex is rowindex+1because I have already added activity column
-
-features - vector of descripive names for 79 measurements
+- uses for loop to replace variable name with descriptive name - columnindex is rowindex+1because I have already added activity column
+-features - vector of descripive names for 79 measurements
 
 Step 5
 - creates subject vector and cbinds it to dataset
